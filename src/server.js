@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 
 const Book = require("./books/model");
+const Genre = require("./genres/model");
 
 const bookRouter = require("./books/routes");
 
@@ -16,6 +17,7 @@ app.use("./books", bookRouter);
 
 const syncTables = () => {
     Book.sync();
+    Genre.sync();
 };
 
 
