@@ -1,4 +1,5 @@
 const Book = require("./model");
+const Genre = require("../genres/model");
 
 //find all books 
 const getAllBooks = async (req, res) => {
@@ -13,9 +14,11 @@ const getAllBooks = async (req, res) => {
 //add a book to database 
 const addBook = async (req, res) => {
     try {
+       const genre = await Genre.findOne({where: {genre: req.body.genre}});
        const book = await Book.create({title: req.body.title,
         author: req.body.author,
-        genre: req.body.genre});
+        GenreId: genre.id,
+        });
       res.status(201).json({book: book, message: "book created"});   
     } catch (error) {
       res.status(500).json({error: error, errorMessage: errorMessage});
