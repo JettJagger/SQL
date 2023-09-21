@@ -1,5 +1,6 @@
 const Book = require("./model");
 
+//find all books 
 const getAllBooks = async (req, res) => {
     try {
         const books = await Book.findAll();
@@ -9,6 +10,7 @@ const getAllBooks = async (req, res) => {
     }
 };
 
+//add a book to database 
 const addBook = async (req, res) => {
     try {
        const book = await Book.create({title: req.body.title,
@@ -21,6 +23,7 @@ const addBook = async (req, res) => {
    
 };
 
+//update the author on the database 
 const updateAuthor = async (req, res) => {
     const bookId = req.params.id;
     const { author } = req.body;
@@ -63,6 +66,7 @@ const deleteBook = async (req, res) => {
     }
 };
 
+//find a book by its title 
 const findBookByTitle = async (req, res) => {
     const titleToFind = req.query.title;
 
@@ -85,6 +89,7 @@ const findBookByTitle = async (req, res) => {
     }
 };
 
+//delete all entries from the database
 const deleteAllEntries = async (req, res) => {
     try {
         await Book.destroy({
