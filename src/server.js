@@ -28,6 +28,24 @@ const syncTables = () => {
     Book.sync();
 };
 
+app.post("/addbook", async (req, res) => {
+    const book = await Book.create({
+        title: req.body.title,
+        author: req.body.author,
+        genre: req.body.genre
+    });
+     
+    const successResponse = {
+        book: book,
+        message: "book created",
+    };
+
+    res.status(201).json(successResponse);
+
+
+
+})
+
 //http://localhost/health
 app.get("/health", (req,res) => {
     res.status(200).json({message: "API is healthy"});
