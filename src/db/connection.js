@@ -1,4 +1,4 @@
-require("dotenv").config();
+
 const { Sequelize } = require("sequelize")
 
 const connection = new Sequelize(process.env.MYSQL_URI);
