@@ -7,7 +7,7 @@ const app = express ();
 
 app.use(express.json());
 
-const {DataTypes} = require("sequalize");
+const {DataTypes} = require("sequelize");
 const connection = require("./db/connection");
 
 const Book = connection.define("Book", {
@@ -22,8 +22,11 @@ const Book = connection.define("Book", {
     genre: {
         type: DataTypes.STRING,
     },
-
 });
+
+const syncTables = () => {
+    Book.sync();
+};
 
 //http://localhost/health
 app.get("/health", (req,res) => {
@@ -31,5 +34,6 @@ app.get("/health", (req,res) => {
 });
 
 app.listen(port, () => {
+    syncTables();
     console.log(`App is listening on port ${port}`);
 });
