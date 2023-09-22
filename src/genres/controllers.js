@@ -11,6 +11,16 @@ const addGenre = async (req, res) => {
     }
 };
 
+const getGenre = async (req, res) => {
+    try {
+        const genre = await Genre.findAll();
+      res.status(200).json({genre:genre, message: "genre found"});
+    } catch (error) {    
+       res.status(500).json({error: error, errorMessage: error.message});
+    }
+};
+
 module.exports = {
     addGenre,
+    getGenre,
 };

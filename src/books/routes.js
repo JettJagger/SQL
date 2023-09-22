@@ -3,7 +3,7 @@ const bookRouter = Router();
 
 const Book = require("./model");
 
-const {getAllBooks, updateAuthor, deleteBook, findBookByTitle, deleteAllEntries} = require("./controllers");
+const {getAllBooks, updateAuthor, deleteBook, findBookByTitle, deleteAllEntries, addBook} = require("./controllers");
 
 //add book to the data base 
 bookRouter.post("/addbook", addBook);

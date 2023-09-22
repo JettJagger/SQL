@@ -7,7 +7,7 @@ const getAllBooks = async (req, res) => {
         const books = await Book.findAll();
       res.status(200).json({books:books, message: "books found"});
     } catch (error) {    
-       res.status(500).json({error: error, errorMessage: errorMessage});
+       res.status(500).json({error: error, errorMessage: error.message});
     }
 };
 
@@ -21,7 +21,7 @@ const addBook = async (req, res) => {
         });
       res.status(201).json({book: book, message: "book created"});   
     } catch (error) {
-      res.status(500).json({error: error, errorMessage: errorMessage});
+      res.status(500).json({error: error, errorMessage: error.message});
     }
    
 };
