@@ -1,6 +1,4 @@
 const Authors = require("./model");
-const Genre = require("../genres/model");
-const Books = require("../books/model");
 
 const addAuthor = async (req, res) => {
     try {
@@ -9,7 +7,7 @@ const addAuthor = async (req, res) => {
         });
         res.status(201).json({author:author, message: "successfully added author"});
     } catch (error) {
-        res.status(500).json({error: error, errorMessage: errorMessage});
+        res.status(500).json({error: error, errorMessage: error.message});
     }
 }
 
@@ -18,7 +16,7 @@ const getAuthor = async (req, res) => {
         const author = await Authors.findAll();
       res.status(200).json({author:author, message: "author found"});
     } catch (error) {    
-       res.status(500).json({error: error, errorMessage: errorMessage});
+       res.status(500).json({error: error, errorMessage: error.message});
     }
 };
 
