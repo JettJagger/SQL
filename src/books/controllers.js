@@ -15,13 +15,14 @@ const getAllBooks = async (req, res) => {
 const addBook = async (req, res) => {
     try {
        const genre = await Genre.findOne({where: {genre: req.body.genre}});
+       console.log("Genre!!!!!!!!!!!!!!!!!!: ", genre);
        const book = await Book.create({title: req.body.title,
         author: req.body.author,
         GenreId: genre.id,
         });
       res.status(201).json({book: book, message: "book created"});   
     } catch (error) {
-      res.status(500).json({error: error, errorMessage: errorMessage});
+      res.status(500).json({error: error, errorMessage: error.message});
     }
    
 };

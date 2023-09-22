@@ -13,7 +13,7 @@ const app = express ();
 
 app.use(express.json());
 
-app.use("./books", bookRouter);
+app.use("/books", bookRouter);
 app.use("/genres", genreRouter);
 
 
